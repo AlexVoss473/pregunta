@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedir ser Novia</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Para evitar que aparezcan barras de desplazamiento */
+        }
+        .contenedor {
+            text-align: center;
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #ff6f61;
+            font-size: 2rem;
+        }
+        .boton {
+            padding: 15px 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .si {
+            background-color: #28a745;
+            color: white;
+        }
+        .no {
+            background-color: #dc3545;
+            color: white;
+            position: absolute;
+            transition: transform 0.1s ease;
+        }
+        .mensaje {
+            display: none;
+            margin-top: 20px;
+            font-size: 1.5rem;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <h1>¿Quieres ser mi novia?</h1>
+        <button class="boton si" onclick="mostrarMensaje()">Sí</button>
+        <button class="boton no" id="no">No</button>
+        <div class="mensaje" id="mensaje">¡Me alegra mucho! 💖 ¡Te quiero mucho!</div>
+    </div>
+
+    <script>
+        // Función para mostrar el mensaje cuando se hace clic en "Sí"
+        function mostrarMensaje() {
+            document.getElementById('mensaje').style.display = 'block';
+        }
+
+        // Función para mover el botón "No" aleatoriamente cuando el cursor se acerca
+        document.getElementById('no').addEventListener('mouseenter', moverBoton);
+
+        function moverBoton() {
+            var button = document.getElementById('no');
+            
+            // Obtenemos las dimensiones de la ventana
+            var maxX = window.innerWidth - button.offsetWidth;  // Limite derecho (ancho de la ventana - ancho del botón)
+            var maxY = window.innerHeight - button.offsetHeight; // Limite inferior (alto de la ventana - alto del botón)
+
+            // Generamos nuevas posiciones aleatorias dentro de la pantalla
+            var newX = Math.random() * maxX;
+            var newY = Math.random() * maxY;
+            
+            // Movemos el botón a la nueva posición dentro de los límites
+            button.style.left = newX + "px";
+            button.style.top = newY + "px";
+        }
+    </script>
+</body>
+</html>
